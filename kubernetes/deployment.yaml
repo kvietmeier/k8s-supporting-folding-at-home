@@ -59,14 +59,17 @@ spec:
             requests:
               cpu: 1m
               memory: 200Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: folding
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: folding-at-home
+
+
+# Not working
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: folding
+#spec:
+#  type: LoadBalancer
+#  ports:
+#  - port: 80
+#  selector:
+#    app: folding-at-home
