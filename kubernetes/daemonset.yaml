@@ -16,7 +16,6 @@ spec:
         app.kubernetes.io/name: k8s-supporting-folding-at-home
         app.kubernetes.io/version: "latest"
     spec:
-      serviceAccountName: k8s-supporting-folding-at-home
       volumes:
         - name: data-volume
           emptyDir: {}
