@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: folding-at-home
     app.kubernetes.io/version: "latest"
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: folding-at-home
@@ -54,6 +55,18 @@ spec:
           resources:
             limits:
               memory: 200Mi
+              cpu: 2m
             requests:
               cpu: 1m
               memory: 200Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: folding
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: folding-at-home
