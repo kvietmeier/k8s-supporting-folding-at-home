@@ -60,14 +60,14 @@ spec:
               cpu: 1m
               memory: 200Mi
 # Not working
-#---
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: folding
-#spec:
-#  type: LoadBalancer
-#  ports:
-#  - port: 7396
-#  selector:
-#    app: folding-at-home
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: folding
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 7396
+  selector:
+    app.kubernetes.io/name: folding-at-home
