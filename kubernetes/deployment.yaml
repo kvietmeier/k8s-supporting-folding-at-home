@@ -59,7 +59,8 @@ spec:
             requests:
               cpu: 1m
               memory: 200Mi
-# Not working
+# Working now
+# Need to use full name for app selector
 ---
 apiVersion: v1
 kind: Service
