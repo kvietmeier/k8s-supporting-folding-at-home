@@ -2,7 +2,14 @@
 
 This repository contains a dockerfile, a helm chart and also a simple Kubernetes configuration to get folding@home running on your own clusters.
 
-I am currently running this usingn simple deployment.yaml on Azure AKS-EE Kubernre6es clusters on Intel NUCs.
+I am currently running this using a simple deployment.yaml on Azure AKS-EE Kubernetes clusters on Intel NUCs and a Lenovo T15 Running Windows 11 Pro/Ent. My goal is to start with the simple case and add complexity.
+
+## ToDo
+
+- [Deploy/manage through Azure GitOps](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-howto-use-gitops)
+- Deploy multiple pods to consume more resources
+- Edit resources to max out a single pod
+- Enable GPU - need MSFT to enavble GPU passthrough for AKS-EE 
 
 ## Kubernetes
 
@@ -38,7 +45,7 @@ kubernetes   ClusterIP      10.96.0.1       <none>          443/TCP          22h
 
 ```
 
-## Helm (untested)
+## Helm (untested/draft)
 
 This deploys a daemonset via helm with folding-powerlevel set to medium. You can add resource limitation and change other settings via values files like with every other helm chart.
 
