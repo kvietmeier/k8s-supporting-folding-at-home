@@ -55,9 +55,9 @@ spec:
           resources:
             limits:
               memory: 200Mi
-              cpu: "3"
+              cpu: "1"
             requests:
-              cpu: "2"
+              cpu: "1"
               memory: 200Mi
 # Working now
 # Need to use full name for app selector
