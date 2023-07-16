@@ -30,9 +30,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: USER
-              value: "Anonymous"
+              value: "PapaVietmeier"
             - name: TEAM
-              value: "0"
+              value: "1064672"
             - name: PASSKEY
               valueFrom:
                 secretKeyRef:
@@ -40,7 +40,7 @@ spec:
                   key: passkey
                   optional: true
             - name: POWER
-              value: "light"
+              value: "full"
           volumeMounts:
             - mountPath: /home/folding
               name: data-volume
