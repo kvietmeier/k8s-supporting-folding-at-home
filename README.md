@@ -9,7 +9,7 @@ I am currently running this using a simple deployment.yaml on Azure AKS-EE Kuber
 - [Deploy/manage through Azure GitOps](https://learn.microsoft.com/en-us/azure/aks/hybrid/aks-edge-howto-use-gitops)
 - Deploy multiple pods to consume more resources
 - Edit resources to max out a single pod
-- Enable GPU - need MSFT to enavble GPU passthrough for AKS-EE 
+- Enable GPU - need MSFT to enable GPU passthrough for AKS-EE 
 
 ## Kubernetes
 
@@ -38,6 +38,10 @@ spec:
 ```
 
 ``` powershell
+KV C:\Users\ksvietme\repos\k8s-supporting-folding-at-home> kubectl get deployments -o wide
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS        IMAGES                          SELECTOR
+folding-at-home   1/1     1            1           17m   folding-at-home   wind0r/folding-at-home:latest   app.kubernetes.io/name=folding-at-home,app.kubernetes.io/version=latest
+
 KV C:\Users\ksvietme\repos\k8s-supporting-folding-at-home> kubectl get svc
 NAME         TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)          AGE
 folding      LoadBalancer   10.104.17.249   192.168.1.210   7396:30725/TCP   9m3s
