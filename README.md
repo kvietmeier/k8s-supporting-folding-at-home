@@ -2,20 +2,40 @@
 
 This repository contains a dockerfile, a helm chart and also a simple Kubernetes configuration to get folding@home running on your own clusters.
 
-I am currently running this on Azure AKS-EE Kubernre6es clusters on Intel NUCs.
+I am currently running this usingn simple deployment.yaml on Azure AKS-EE Kubernre6es clusters on Intel NUCs.
 
 ## Kubernetes
 
-This version creates a deployment with resource limits and sets folding-powerlevel to "light" so it should not take that many resources. You can change user, team and powerlevel via environment variables.
+This version creates a deployment with resource limits and sets folding-powerlevel to "full" so beware. You can change user, team and powerlevel via environment variables but I hard coded it in the deployment.yaml file for now, feel free to Fold as my team.
 
 ```powershell
-kubectl apply -f https://raw.githubusercontent.com/kvietmeier/k8s-supporting-folding-at-home/master/kubernetes/daemonset.yaml
+kubectl apply -f https://raw.githubusercontent.com/kvietmeier/k8s-supporting-folding-at-home/master/kubernetes/deployment.yaml
 ```
 
-To assign a local IP:port -
+Deployment creates a LoadBalancer service and assigns an IP from the address pool -
+
+``` yaml
+# Working now
+# Need to use full name for app selector
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: folding
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 7396
+  selector:
+    app.kubernetes.io/name: folding-at-home
+```
 
 ``` powershell
-kubectl expose deployment folding-at-home --type="LoadBalancer" --name=folding
+KV C:\Users\ksvietme\repos\k8s-supporting-folding-at-home> kubectl get svc
+NAME         TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)          AGE
+folding      LoadBalancer   10.104.17.249   192.168.1.210   7396:30725/TCP   9m3s
+kubernetes   ClusterIP      10.96.0.1       <none>          443/TCP          22h
+
 ```
 
 ## Helm (untested)
